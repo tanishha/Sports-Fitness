@@ -49,7 +49,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navigation-wrap").style.padding = "10px 10px";
+    document.getElementById("navigation-wrap").style.padding = "10px 10px",width="5px";
   } else {
     document.getElementById("navigation-wrap").style.padding = "20px 10px";
   }

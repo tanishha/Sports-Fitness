@@ -5,8 +5,8 @@ import RegisterComponent from './Components/userComponent/register.component';
 
 function App() {
   return (<>
- {/* <NavbarComponent/>   */}
-{/* <LoginComponent/> */}
+ <NavbarComponent/>  
+<LoginComponent/>
 <RegisterComponent/>
 </>
 );
