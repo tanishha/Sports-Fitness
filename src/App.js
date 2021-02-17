@@ -1,13 +1,13 @@
+import React from 'react'
+import { ToastContainer } from 'react-toastify';
 import './App.css';
-import NavbarComponent from './Components/navbarComponent/navbar.component';
-import LoginComponent from './Components/userComponent/login.component';
-import RegisterComponent from './Components/userComponent/register.component';
+import AppRouting from './Components/app.routing';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (<>
- <NavbarComponent/>  
-<LoginComponent/>
-<RegisterComponent/>
+<AppRouting></AppRouting>
+<ToastContainer/>
 </>
 );
 }

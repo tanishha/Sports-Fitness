@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import "./user.component.css";
+import {Link} from 'react-router-dom'
+import {
+  showSuccess,
+
+  handleError
+} from './../../util/notification'
+import {POST} from './../../util/httpClient'
+
 const defaultForm = {
-  email: "",
+  username: "",
   password: "",
 };
 export default class LoginComponent extends Component {
@@ -19,10 +27,23 @@ export default class LoginComponent extends Component {
       remember_me:false
     };
   }
+  componentDidMount() {
+    if (localStorage.length !== 0) {
+      this.setState(
+        (preState) => ({
+          data: {
+            username: localStorage.username,
+          },
+          remember_me:true
+        }),
+      )
+    }
+    console.log('username',this.state.data.username)
+}
   handleChange = (e) => {
     let { type, name, value, checked } = e.target;
     if (type === "checkbox") {
-      return this.state({
+      return this.setState({
         [name]: checked,
       });
     }
@@ -39,7 +60,7 @@ export default class LoginComponent extends Component {
     );
   };
   validateForm(fieldname) {
-    let errMsg = this.state.data[fieldname] ? "" : `${fieldname.toUpperCse()} is required`;
+    let errMsg = this.state.data[fieldname] ? "" : `${fieldname} is required`;
     this.setState(
       (preState) => ({
         error: {
@@ -60,8 +81,22 @@ export default class LoginComponent extends Component {
     this.setState({
       isSubmitting:true
     })
-    const {username,password}=this.state;
-  }
+    POST("/auth/login", this.state.data, {})
+    .then((response) => {
+      showSuccess("Welcome " + response.data.user.username + '!!');
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("username", response.data.user.username);
+      localStorage.setItem("password", response.data.user.password)
+      localStorage.setItem("remember_me", this.state.remember_me);
+      this.props.history.push("/home");
+    })
+    .catch((error) => {
+      handleError(error);
+      this.setState({
+        isSubmitting: false,
+      });
+    });
+};
   render() {
     return (
       <section className="sign-in">
@@ -69,25 +104,26 @@ export default class LoginComponent extends Component {
           <div className="signin-content">
             <div className="signin-image">
               <figure>
-                <img src="images/signin-image.jpg" alt="sing up image" />
+                <img src="images/signin-image.jpg" alt="" />
               </figure>
-              <a href="#" className="signup-image-link">
-                Create an account
-              </a>
+              <Link to="/register" className="signup-image-link">
+            Create an account
+              </Link>
             </div>
 
             <div className="signin-form">
               <h2 className="form-title">Sign in</h2>
               <form  className="register-form" id="login-form" onSubmit={this.handleSubmit} noValidate>
                 <div className="form-group">
-                  <label htmlFor="email">
-                    <i className="zmdi zmdi-email"></i>
+                  <label htmlFor="username">
+                    <i className="zmdi zmdi-account material-icons-name"></i>
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Your Email"
+                  <input value={this.state.data.username}
+                  // {localStorage.getItem('username')===null?"":localStorage.getItem('username')}
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Your Username"
                     onChange={this.handleChange}
                   />
                 </div>
@@ -117,8 +153,11 @@ export default class LoginComponent extends Component {
                   <input
                     type="checkbox"
                     name="remember_me"
-                    id="remember-me"
+                    id="remember_me"
                     className="agree-term"
+                    checked={this.state.remember_me}
+                    onChange={this.handleChange}
+
                   />
                   <label htmlFor="remember_me" className="label-agree-term">
                     <span>
@@ -138,26 +177,7 @@ export default class LoginComponent extends Component {
                       }</button>
                 </div>
               </form>
-              <div className="social-login">
-                <span className="social-label">Or login with</span>
-                <ul className="socials">
-                  <li>
-                    <a href="#">
-                      <i className="display-flex-center zmdi zmdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="display-flex-center zmdi zmdi-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="display-flex-center zmdi zmdi-google"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            
             </div>
           </div>
         </div>
