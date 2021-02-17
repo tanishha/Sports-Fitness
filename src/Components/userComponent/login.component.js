@@ -141,7 +141,7 @@ export default class LoginComponent extends Component {
                     name="password"
                     id="password"
                     placeholder="Password"
-                    onChange={this.handleChange}
+                    onChange={this.handleChange} 
                   />
                 </div>
                 <p className="text-danger">
@@ -166,6 +166,12 @@ export default class LoginComponent extends Component {
                     Remember me
                   </label>
                 </div>
+                <div className="form-group">
+
+                <Link to="/forgot" className="label-agree-term">
+            Forgot Password?
+              </Link>
+              </div>
                 <div className="form-group form-button">
                 <button disabled={!this.state.isValidForm}
                       type="submit"

@@ -148,7 +148,7 @@ export default class RegisterComponent extends Component {
                       type="text"
                       name="username"
                       id="username"
-                      placeholder="Your Name"
+                      placeholder="Your Username"
                       onChange={this.handleChange}
                       required
                     />
