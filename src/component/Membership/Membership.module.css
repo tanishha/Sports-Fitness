@@ -1,0 +1,24 @@
+.Form{
+    border: 2px solid green;
+    
+  
+    padding-right: 0;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    width: 35%;
+}
+.Text{
+    text-align: center;
+    color: #ff9980;
+}
+.label{
+    padding-right: 15px;
+}
+@media only screen and (max-width: 600px) {
+   .Form{
+    width: 70%;
+
+   }
+  }
