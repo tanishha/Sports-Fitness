@@ -9,7 +9,9 @@ import NavbarComponent from "./navbarComponent/navbar.component";
 import ProductComponent from "./productComponent/product.component";
 import LoginComponent from "./userComponent/login.component";
 import RegisterComponent from "./userComponent/register.component";
-import BookingComponent from "./bookingComponent/booking.component";
+import SportsComponent from "./bookingComponent/sports.component";
+import FitnessComponent from "./bookingComponent/fitness.component";
+import FitnessMembership from "./bookingComponent/fitness_membership";
 import HomeComponent from "./homeComponent/home.component";
 import ForgetPasswordComponent from "./userComponent/forgetPassword.component";
 import ResetPassword from "./userComponent/resetPassword.component";
@@ -72,8 +74,16 @@ const AppRouting = (props) => {
             component={ProductComponent}
           ></ProtectedRoute>
           <ProtectedRoute
-            path="/booking"
-            component={BookingComponent}
+            path="/sports"
+            component={SportsComponent}
+          ></ProtectedRoute>
+           <ProtectedRoute
+            path="/fitness"
+            component={FitnessComponent}
+          ></ProtectedRoute>
+         <ProtectedRoute
+            path="/fitness_membership/:id"
+            component={FitnessMembership}
           ></ProtectedRoute>
           <ProtectedRoute
             path="/home"

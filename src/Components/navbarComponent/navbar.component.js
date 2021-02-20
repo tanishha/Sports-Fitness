@@ -29,11 +29,15 @@ class NavbarComponent extends Component {
             Home
           </Link>
         </li>
+        
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-          <Link className="nav-link" to="/booking">
-            Boooking
-          </Link>
-        </li>
+									<Link className="nav-link dropdown-toggle" data-toggle="dropdown" to="#" role="button" aria-haspopup="true" aria-expanded="false">Booking</Link>
+									<div className="dropdown-menu">
+										<Link className="dropdown-item" to="/sports">Sports</Link>
+										<Link className="dropdown-item" to="/fitness">Fitness</Link>
+										
+									</div>
+								</li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
           <Link className="nav-link" to="/product">
             Product
