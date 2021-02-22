@@ -17,7 +17,7 @@ class NavbarComponent extends Component {
     let nav = localStorage.getItem('token')? (
       <>
         {" "}
-        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+        {/* <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
           <Link
             className="nav-link dropdown-toggle"
             data-toggle="dropdown"
@@ -29,8 +29,8 @@ class NavbarComponent extends Component {
             Home
           </Link>
         </li>
-        
-        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+         */}
+        {/* <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<Link className="nav-link dropdown-toggle" data-toggle="dropdown" to="#" role="button" aria-haspopup="true" aria-expanded="false">Booking</Link>
 									<div className="dropdown-menu">
 										<Link className="dropdown-item" to="/sports">Sports</Link>
@@ -39,10 +39,20 @@ class NavbarComponent extends Component {
 									</div>
 								</li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+          <Link className="nav-link" to="/sports">
+            Sports
+          </Link>
+        </li> */}
+        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+          <Link className="nav-link" to="/fitness">
+            Fitness
+          </Link>
+        </li>
+         {/* <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
           <Link className="nav-link" to="/product">
             Product
           </Link>
-        </li>
+        </li> */}
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
           <Link
             className="nav-link"
@@ -56,7 +66,7 @@ class NavbarComponent extends Component {
     ) : (
       <>
         {" "}
-        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+        {/* <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
           <Link
             className="nav-link dropdown-toggle"
             data-toggle="dropdown"
@@ -67,7 +77,7 @@ class NavbarComponent extends Component {
           >
             Home
           </Link>
-        </li>
+        </li> */}
         
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
           <Link className="nav-link" to="/">

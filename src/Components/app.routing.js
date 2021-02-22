@@ -15,6 +15,8 @@ import FitnessMembership from "./bookingComponent/fitness_membership";
 import HomeComponent from "./homeComponent/home.component";
 import ForgetPasswordComponent from "./userComponent/forgetPassword.component";
 import ResetPassword from "./userComponent/resetPassword.component";
+import ProductDetailComponent from "./productComponent/productDetail.component";
+import ProductCartComponent from "./productComponent/productCart.component";
 
 const NotFound = () => {
   return <h1 className="display-1">404 Not found</h1>;
@@ -81,9 +83,17 @@ const AppRouting = (props) => {
             path="/fitness"
             component={FitnessComponent}
           ></ProtectedRoute>
+           <ProtectedRoute
+            path="/cart"
+            component={ProductCartComponent}
+          ></ProtectedRoute>
          <ProtectedRoute
             path="/fitness_membership/:id"
             component={FitnessMembership}
+          ></ProtectedRoute>
+            <ProtectedRoute
+            path="/products/:id"
+            component={ProductDetailComponent}
           ></ProtectedRoute>
           <ProtectedRoute
             path="/home"
